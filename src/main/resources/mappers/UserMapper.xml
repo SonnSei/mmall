@@ -11,8 +11,8 @@
       <arg column="question" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="answer" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="role" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.com.mmall.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.com.mmall.util.Date" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
@@ -167,7 +167,7 @@
 
   <select id="checkEmail" parameterType="string" resultType="int">
     SELECT COUNT(1) FROM mmall_user
-    HWERE email = #{email}
+    WHERE email = #{email}
   </select>
 
   <select id="selectQuestionByUsername" parameterType="string" resultType="string">
@@ -195,14 +195,14 @@
   <select id="checkPassword" parameterType="map" resultType="int">
     select count(1)
     from mmall_user
-    wherr id=#{userId}
+    where id=#{userId}
     and password = #{password}
   </select>
 
   <select id="checkEmailByUserId" parameterType="map" resultType="int">
     select count(1)
     from mmall_user
-    where eamil=#{email}
+    where email=#{email}
     and id !=#{userId};
   </select>
 </mapper>
