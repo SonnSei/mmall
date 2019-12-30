@@ -74,7 +74,7 @@ public class CategoryServiceImpl implements ICategoryService {
      * @param categoryId
      * @return
      */
-    public ServerResponse getCategoryAndDeepChildrenCategory(Integer categoryId) {
+    public ServerResponse<List<Integer>> getCategoryAndDeepChildrenCategory(Integer categoryId) {
         // guava对集合的处理还是很强大的
         Set<Category> categorySet = Sets.newHashSet();
         findChildCategory(categorySet, categoryId);

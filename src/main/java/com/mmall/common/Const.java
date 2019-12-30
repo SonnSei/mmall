@@ -1,5 +1,9 @@
 package com.mmall.common;
 
+import com.google.common.collect.Sets;
+
+import java.util.Set;
+
 /**
  * @Classname Const
  * @Description TODO
@@ -32,5 +36,10 @@ public class Const {
         public int getCode() {
             return code;
         }
+    }
+
+    public interface ProductListOrderBy {
+        // 用set的话，代码中的contains方法复杂度是常数级的
+        Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc", "price_asc");
     }
 }

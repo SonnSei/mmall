@@ -1,6 +1,7 @@
 package com.mmall.dao;
 
 import com.mmall.pojo.Product;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -20,5 +21,7 @@ public interface ProductMapper {
 
     List<Product> selectList();
 
-    List<Product> selectByNameAndProductId(@RequestParam("productName") String productName, @RequestParam("productId")Integer productId);
+    List<Product> selectByNameAndProductId(@Param("productName") String productName, @Param("productId")Integer productId);
+
+    List<Product> selectByNameAndCategoryIds(@Param("productName") String productName,@Param("categoryIdList")List<Integer> categoryIdList);
 }

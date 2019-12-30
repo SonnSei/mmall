@@ -105,7 +105,8 @@ public class ProductManageController {
 
     @RequestMapping("search.do")
     @ResponseBody
-    public ServerResponse productSearch(HttpSession session, String productName, Integer productId, @RequestParam(value = "pageNume", defaultValue = "1") int pageNum,
+    public ServerResponse productSearch(HttpSession session, String productName,Integer productId,
+                                        @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
                                         @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
