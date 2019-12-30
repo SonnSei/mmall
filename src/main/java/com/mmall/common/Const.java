@@ -42,4 +42,11 @@ public class Const {
         // 用set的话，代码中的contains方法复杂度是常数级的
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc", "price_asc");
     }
+
+    public interface Cart{
+        int CHECKED=1; // 选中状态
+        int UN_CHECKED = 0;// 未选中状态
+        String LIMIT_NUM_FAIL = "LIMIT_NUM_FAIL";
+        String LIMIT_NUM_SUCCESS = "LIMIT_NUM_SUCCESS";
+    }
 }
