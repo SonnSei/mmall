@@ -140,4 +140,33 @@
     where checked=0
     and user_id=#{userId}
   </select>
+
+  <delete id="deleteByUserIdProductIds" parameterType="map">
+    delete from mmall_cart
+    where user_id=#{userId}
+    <if test="productIds!=null">
+      and product_id in
+      <foreach collection="productIds" index="index" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </if>
+  </delete>
+  <update id="checkOrUncheckedAllProduct" parameterType="map">
+    update mmall_cart
+    set check  = #{checked},
+    update_time = now()
+    where user_id = #{userId}
+  </update>
+  <update id="checkOrUncheckedProduct" parameterType="map">
+    update mmall_cart
+    set check  = #{checked},
+    update_time = now()
+    where user_id = #{userId}
+    and product_id = #{productId}
+  </update>
+  <select id="getCartProductCount" parameterType="int" resultType="int">
+--     sum是可能返回null的，要么处理slq，要么把int改成Integer
+    select IFNULL(sum(quality),0) as count form mmall_cart
+    where user_id = #{userId}
+  </select>
 </mapper>
